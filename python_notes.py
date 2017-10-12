@@ -1,10 +1,13 @@
+import random
 # classes
+
+
 class Theif:
     sneaky = True
 
     def __init__(self, name, sneaky=True, **kwargs):
         self.name = name
-        self.neaky = sneaky
+        self.sneaky = sneaky
 
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -14,3 +17,6 @@ class Theif:
 
     def hide(self, light_level):
         return self.sneaky and light_level < 10
+
+
+# setattr(object, name, value) -> sets an new value to an object after class in

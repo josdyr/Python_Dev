@@ -1,30 +1,33 @@
-#Python Dungeon Game
+# Python Dungeon Game
 import os
 import random
 
-#draw grid
-#pick a ramdom location for the player
-#pick a ramdom location for the exit door
-#pick a ramdom location for the monster
-#draw player in the grid
-#take input from movement
-#move player, unless invalid move (paste edges of grid)
-#check for win/loss
-#clear screen and redraw grid
+# draw grid
+# pick a ramdom location for the player
+# pick a ramdom location for the exit door
+# pick a ramdom location for the monster
+# draw player in the grid
+# take input from movement
+# move player, unless invalid move (paste edges of grid)
+# check for win/loss
+# clear screen and redraw grid
 
 CELLS = [
-    (0,0), (1, 0), (2, 0), (3, 0), (4, 0),
-    (0,1), (1, 1), (2, 1), (3, 1), (4, 1),
-    (0,2), (1, 2), (2, 2), (3, 2), (4, 2),
-    (0,3), (1, 3), (2, 3), (3, 3), (4, 3),
-    (0,4), (1, 4), (2, 4), (3, 4), (4, 4)
+    (0, 0), (1, 0), (2, 0), (3, 0), (4, 0),
+    (0, 1), (1, 1), (2, 1), (3, 1), (4, 1),
+    (0, 2), (1, 2), (2, 2), (3, 2), (4, 2),
+    (0, 3), (1, 3), (2, 3), (3, 3), (4, 3),
+    (0, 4), (1, 4), (2, 4), (3, 4), (4, 4)
 ]
+
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def get_locations():
     return random.sample(CELLS, 3)
+
 
 def move_player(player, move):
     x, y = player
@@ -37,6 +40,7 @@ def move_player(player, move):
     if move == "DOWN":
         y += 1
     return x, y
+
 
 def get_moves(player):
     moves = ["LEFT", "RIGHT", "UP", "DOWN"]
@@ -51,8 +55,9 @@ def get_moves(player):
         moves.remove("DOWN")
     return moves
 
+
 def draw_map(player):
-    print(" _"*5)
+    print(" _" * 5)
     tile = "|{}"
 
     for cell in CELLS:
@@ -81,8 +86,8 @@ def game_loop():
         draw_map(player)
         valid_moves = get_moves(player)
 
-        print("You are currently in room {}".format(player)) #fill with player position
-        print("You can move {}".format(", ".join(valid_moves))) #fill with availiable moves
+        print("You are currently in room {}".format(player))
+        print("You can move {}".format(", ".join(valid_moves)))
         print("Enter 'q' to quit")
 
         move = input("> ")
@@ -104,6 +109,7 @@ def game_loop():
     else:
         if input("Play again? [Y/n] ").lower() != "n":
             game_loop()
+
 
 print("Welcome to this game!")
 input('Press return to start!')
